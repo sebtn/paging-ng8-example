@@ -1,0 +1,42 @@
+<!-- main app container -->
+<div class="card text-center m-3">
+  <h3 class="card-header">Angular 8 Pagination Example</h3>
+  <div class="card-body">
+    {{title}}
+    <div *ngFor="let item of items | paginate:{itemsPerPage: 50, currentPage:1}">
+        <h4> 
+
+          {{item.bcc}}
+        </h4>
+        <span>
+          {{item.body}}
+          
+        </span>
+        <span>
+          {{item.cc}}
+          
+        </span>
+        <span>
+          {{item.date}}
+          
+        </span>
+        <span>
+          {{item.from}}
+          {{item.subject}}
+          
+        </span>
+        <span>
+          {{item.to}}
+
+        </span>
+
+
+      </div>
+  </div>
+  <div class="card-footer pb-0 pt-3">
+  </div>
+
+  <!-- <div id="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>  -->
+</div>
