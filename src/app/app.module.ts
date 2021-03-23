@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FilterPipe } from './common/filter.pipe'
+import { FilterPipe } from './email-list/common/filter.pipe'
 import { AppComponent } from './app.component';
+import { EmailListComponent } from './email-list/email-list.component'
 import { FormsModule } from '@angular/forms';
-import { HighlightPipe } from './common/highlight.pipe';
+import { HighlightPipe } from './email-list/common/highlight.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { HighlightPipe } from './common/highlight.pipe';
   ],
   declarations: [
     AppComponent,
+    EmailListComponent,
     FilterPipe,
     HighlightPipe,
   ],
