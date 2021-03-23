@@ -5,15 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FilterPipe } from './common/filter.pipe'
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { HighlightPipe } from './common/highlight.pipe';
+
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
-    FilterPipe
+    FilterPipe,
+    HighlightPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

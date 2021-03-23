@@ -1,30 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation  } from '@angular/core';
 
 import email from './constants/email.json';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-    title = "Angular 2 simple pagination";
-    items = email;
-    pagination = {
-      pageSize: 25,
-      offset: 0,
-      total: email.length
-    }
+  title = 'Angular client side pagination';
+  filteredItems = email;
 
+  pageNum: number = 1;
+  searchTerm = '';
 
-  // find the number of calls to make
-  // or how to spilt in batch calls
-  // sln =>  write a function that takes in pagination 
-  // information to make the list focus
-  // on the elements we want by having two numbers.
- constructor() {
-  console.log('a', this.pagination, email)
+  constructor() {
+  }
 
- }
-
+  onPageChanged(event) {
+    this.pageNum = event;
+  }
 }

@@ -1,42 +1,77 @@
-<!-- main app container -->
-<div class="card text-center m-3">
-  <h3 class="card-header">Angular 8 Pagination Example</h3>
-  <div class="card-body">
-    {{title}}
-    <div *ngFor="let item of items | paginate:{itemsPerPage: 50, currentPage:1}">
-        <h4> 
-
-          {{item.bcc}}
-        </h4>
-        <span>
-          {{item.body}}
-          
-        </span>
-        <span>
-          {{item.cc}}
-          
-        </span>
-        <span>
-          {{item.date}}
-          
-        </span>
-        <span>
-          {{item.from}}
-          {{item.subject}}
-          
-        </span>
-        <span>
-          {{item.to}}
-
-        </span>
-
-
-      </div>
-  </div>
-  <div class="card-footer pb-0 pt-3">
+<div class="container">
+  <div class="title-wrapper">
+    <span class="title">Email Viewer</span>
+    <input
+      class="search-input"
+      placeholder="Search Emails"
+      [(ngModel)]="searchTerm"
+      required
+    />
   </div>
 
-  <!-- <div id="pagination">
-    <pagination-controls (pageChange)="p=$event"></pagination-controls>
-  </div>  -->
+  <div class="divider-two"></div>
+
+  <div class="pagination-wrapper">
+    <pagination-controls
+      id="pagination"
+      (pageChange)="onPageChanged($event)"
+    ></pagination-controls>
+  </div>
+
+  <div
+    class="list-item-wrapper"
+    *ngFor="
+      let item of filteredItems
+        | filter: searchTerm
+        | paginate: { id: 'pagination', itemsPerPage: 25, currentPage: pageNum }
+    "
+  >
+    <div class="from-item mt1">
+      <span class="item-label">From: </span>
+      {{ item.from }}
+    </div>
+
+    <div class="to-item mt1">
+      <span class="item-label">To: </span>
+        {{ item.to }}
+    </div>
+
+    <div class="bcc-item mt1">
+      <span class="item-label">Bcc: </span>
+      {{ item.bcc }}
+    </div>
+
+    <div class="cc-item mt1">
+      <span class="item-label">Cc: </span>
+      {{ item.cc }}
+    </div>
+
+    <div class="date-item mt1">
+      <span class="item-label">Date: </span>
+      <span [innerHTML]="item.date | date"></span>
+    </div>
+
+    <div class="subject-item mt1">
+      <span class="item-label">Subject: </span>
+      <span [innerHTML]="item.subject | highlight: searchTerm"></span>
+    </div>
+
+    <div class="body-item mt1">
+      <span class="item-label">Body: </span>
+      <span
+        class="space-lines mt0"
+        [innerHTML]="item.body | highlight: searchTerm"
+      >
+      </span>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+
+  <div class="pagination-wrapper">
+    <pagination-controls
+      id="pagination"
+      (pageChange)="onPageChanged($event)"
+    ></pagination-controls>
+  </div>
 </div>
